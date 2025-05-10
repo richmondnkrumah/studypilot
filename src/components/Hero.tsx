@@ -3,8 +3,8 @@ import { ChangeEvent, DragEvent, useRef, useState } from 'react'
 import PDF from '../../public/PDF.svg'
 import ARROWRIGHT from '../../public/arrowRight.svg'
 import Image from 'next/image'
-import { Divider } from "@heroui/react";
 import { useRouter } from 'next/navigation'
+
 type Props = {}
 // breakpoints 0-809, 810-1280-1280----
 
@@ -12,12 +12,13 @@ const Hero = (props: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [isUploading, setIsUploading] = useState(false)
   const router = useRouter()
+
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file && file.type == "application/pdf") {
       uploadFile(file)
     }
-    
+
   }
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
@@ -32,16 +33,14 @@ const Hero = (props: Props) => {
     setIsUploading(true)
     const formData = new FormData()
     formData.append('file', file)
+    console.log("pooss")
 
     try {
-      const reader = new FileReader()
-      reader.onload = () => {
-        const base64 = reader.result as string
-        localStorage.setItem("uploaded-pdf", base64)
-        reader.readAsDataURL(file)
-      }
+      const blobUrl = URL.createObjectURL(file)
+      sessionStorage.setItem('pdf-url', blobUrl)
+      console.log("poo")
       setIsUploading(false)
-      router.push('/chat')
+      // router.push('/chat')
     }
     catch (err) {
       console.error(err)
@@ -95,7 +94,6 @@ const Hero = (props: Props) => {
           </div>
         </div>
       </div>
-
       <div className=''>
         <p className='text-center font-bold'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
@@ -110,7 +108,7 @@ const Hero = (props: Props) => {
               </div>
             </div>
           </div>
-          <Divider className='text-gray-200' orientation='horizontal' />
+          <div className='w-full h-[1px] bg-gray-300'></div>
           <div className='group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
