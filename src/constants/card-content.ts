@@ -19,20 +19,20 @@ export const CARD_DATA:_content[] = [
     },
     {
         icon: REASEARCHERSVG,
-        title: 'for researchers',
-        summary: "Explore scientific papers, academic articles, and books to get the information you need for your research.",
+        title: 'for students',
+        summary: "Study for exams, get help with homework, and answer multiple choice questions faster than your classmates.",
         image: REASEARCHERSIMAGE
     },
     {
         icon: REASEARCHERSVG,
-        title: 'for researchers',
-        summary: "Explore scientific papers, academic articles, and books to get the information you need for your research.",
+        title: 'for professionals',
+        summary: "Navigate legal contracts, financial reports, manuals, and training material. Ask questions to any PDF to stay ahead.",
         image: REASEARCHERSIMAGE
     },
     {
         icon: REASEARCHERSVG,
-        title: 'for researchers',
-        summary: "Explore scientific papers, academic articles, and books to get the information you need for your research.",
+        title: 'for multi-file chats',
+        summary: "Create folders to organize your files and chat with multiple PDFs in one single conversation.",
         image: REASEARCHERSIMAGE
     }
 ]
