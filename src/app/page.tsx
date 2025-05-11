@@ -8,14 +8,14 @@ type Props = {}
 const Homepage = (props: Props) => {
   return (
     <>
-      <header className='mt-16 flex justify-center'>
+      <header className='mt-16 mx-3 sm:mx-6 flex justify-center'>
         <Hero />
       </header>
-      <main className='my-16 gap-16 flex flex-col xl:items-center'>
+      <main className='my-16 mx-3 sm:mx-6 gap-16 flex flex-col xl:items-center'>
         <Features />
         <Faq />
       </main>
-      <footer className='mx-auto mb-16 flex justify-center '>
+      <footer className='mx-3 sm:mx-6 mb-16 flex justify-center '>
         <Footer />
       </footer>
     </>
