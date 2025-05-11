@@ -58,9 +58,9 @@ const Hero = (props: Props) => {
     <ResponsiveWrapper>
       <div className='flex flex-col gap-10'>
         <div className='flex flex-col gap-3 text-center'>
-          <h1 className='text-6xl font-bold'>Chat with any <span className='relative z-10 text-white  before:bg-amber-500 before:-z-10 before:absolute before:w-[110%] before:h-[90%] before:rotate-4 before:rounded-2xl before:-translate-x-[4%] before:-translate-y-[4%]'>PDF</span></h1>
+          <h1 className='text-4xl xs:text-5xl sm:text-6xl font-bold'>Chat with any <span className='relative z-10 text-white  before:bg-amber-500 before:-z-10 before:absolute before:w-[110%] before:h-[90%] before:rotate-4 before:rounded-2xl before:-translate-x-[4%] before:-translate-y-[4%]'>PDF</span></h1>
           <div className='flex justify-center'>
-            <p className='max-w-[36rem] text-lg font-semibold text-[#707070]'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
+            <p className='max-w-[36rem] text-md xs:text-lg font-semibold text-[#707070]'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
           </div>
         </div>
         <div onClick={() => {
@@ -82,15 +82,15 @@ const Hero = (props: Props) => {
                 <div className='flex flex-col justify-center items-center h-full gap-12'>
                   <div className='flex flex-col gap-4'>
                     <div className='flex justify-center items-center'>
-                      <Image src={PDF} alt='Upload SVG' width={70} height={60} />
+                      <Image src={PDF} alt='Upload SVG' className='w-[50px] h-[50px] xs:w-[70px] xs:h-[70px]' />
                     </div>
                     <div className='rounded-lg bg-amber-500 py-2 text-center'>
                       <p className='text-white text-lg'>Browse File</p>
                     </div>
-                    <p className='font-semibold text-[#707070]'>Drag & Drop, or Choose PDF to upload</p>
+                    <p className='font-semibold text-sm xs:text-md text-[#707070]'>Drag & Drop, or Choose PDF to upload</p>
                   </div>
                   <div className=''>
-                    <p className='font-bold text-gray-500'>Only PDF files are supported.</p>
+                    <p className='font-bold text-sm xs:text-md text-gray-500'>Only PDF files are supported.</p>
 
                   </div>
                 </div>
@@ -100,16 +100,16 @@ const Hero = (props: Props) => {
         </div>
       </div>
       <div className=''>
-        <p className='text-center font-bold text-gray-500'>For a quick try, get started with our sample files here:</p>
+        <p className='text-center text-sm xs:text-md font-bold mb-3 text-gray-500'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
-                <Image src={PDF} alt='pdf file icon' height={30} width={30} />
-                <p>Name of the file</p>
+                <Image src={PDF} alt='pdf file icon' className='w-[25px] h-[25px] xs:w-[30px] xs:h-[30px]' />
+                <p className='text-sm xs:text-md'>Name of the file</p>
               </div>
               <div className='group-hover:translate-x-3 transition-transform'>
-                <Image src={ARROWRIGHT} alt='arrow right svg' height={30} />
+                <Image src={ARROWRIGHT} alt='arrow right svg' className='w-5 xs:w-8' />
               </div>
             </div>
           </div>
@@ -117,11 +117,11 @@ const Hero = (props: Props) => {
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
-                <Image src={PDF} alt='pdf file icon' height={30} width={30} />
-                <p>Name of the file</p>
+                <Image src={PDF} alt='pdf file icon' className='w-[25px] h-[25px] xs:w-[30px] xs:h-[30px]' />
+                <p className='text-sm xs:text-md'>Name of the file</p>
               </div>
               <div className='group-hover:translate-x-3 transition-transform'>
-                <Image src={ARROWRIGHT} className='text-green-500' alt='arrow right svg' height={30} />
+                <Image src={ARROWRIGHT} className='text-green-500 w-5 xs:w-8' alt='arrow right svg'  />
               </div>
             </div>
           </div>

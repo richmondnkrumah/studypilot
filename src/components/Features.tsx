@@ -8,8 +8,8 @@ const Features = (props: Props) => {
     return (
         <ResponsiveWrapper>
             <div className='text-content flex flex-col gap-2 justify-center items-center'>
-                <h1 className='text-4xl font-bold'>StudyPilot in a  <span className='text-amber-500'>Nutshell</span></h1>
-                <p className='text-lg font-semibold text-[#707070] text-center'>Your Personal Chat GPT-but for PDFs, Read and chat with PDFs at a free, secure and fast speed</p>
+                <h1 className='text-2xl xs:text-xl sm:text-4xl font-bold'>StudyPilot in a  <span className='text-amber-500'>Nutshell</span></h1>
+                <p className='text-md xs:text-lg font-semibold text-[#707070] text-center'>Your Personal Chat GPT-but for PDFs, Read and chat with PDFs at a free, secure and fast speed</p>
             </div>
             <div className='flex flex-wrap gap-10 justify-center '>
                 {

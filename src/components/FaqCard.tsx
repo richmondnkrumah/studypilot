@@ -10,7 +10,7 @@ const FaqCard = ({ title, summary }: _faq_contents) => {
     return (
         <div onClick={() => setIsSummaryOpen(prev => !prev)} className={`border border-gray-200 p-3 rounded-xl ${isSummaryOpen ? "bg-gray-100" : "bg-inherit"} `}>
             <div className='flex justify-between'>
-                <h4 className='font-semibold text-lg'>{title}</h4>
+                <h4 className='font-semibold xs:text-lg'>{title}</h4>
                 <Image src={CHEVRONDOWN} className={` ${isSummaryOpen ? "-rotate-180" : "rotate-0"} transition-transform duration-400`} height={20} width={20} alt='faq chevron icon' />
             </div>
              <div
@@ -18,7 +18,7 @@ const FaqCard = ({ title, summary }: _faq_contents) => {
           isSummaryOpen ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className='text-[#707070] text-md'>{summary}</p>
+        <p className='text-[#707070] text-sm xs:text-md'>{summary}</p>
       </div>
         </div>
     )
