@@ -1,5 +1,5 @@
+import ResizableWrapper from '@/components/ResizableWrapper'
 import React, { ReactNode } from 'react'
-
 
 const ChatLayout = ({
     chatview,
@@ -13,8 +13,7 @@ const ChatLayout = ({
     return (
         <main className='flex h-full '>
             {sideview}
-            {pdfview}
-            {chatview}
+            <ResizableWrapper chatComponet={chatview} pdfComponent={pdfview} />
         </main>
     )
 }
