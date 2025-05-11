@@ -36,13 +36,4 @@ export const CARD_DATA: _faq_contents[] = [
     title: "Is StudyPilot available on any device?",
     summary: "Absolutely! StudyPilot is designed to be compatible with all devices. Access your documents from your desktop at work, your tablet in class, or your phone while on the go - all you need is a web browser."
   },
-  {
-    title: "Does StudyPilot use GPT-4, Claude, or Gemini?",
-    summary: "Our platform does use Gemini and we hugely  optimized it  for the perfect balance of speed, quality, and efficiency."
-  },
-  
-  {
-    title: "Why use StudyPilot instead of ChatGPT for PDF analysis?",
-    summary: "StudyPilot is purpose-built for document analysis with features you won't find in general AI tools. Our intuitive side-by-side interface displays your chat and document together, while clickable citations instantly scroll to the exact source in your PDF. This specialized design makes document understanding faster and more reliable than anywhere else."
-  }
 ]
