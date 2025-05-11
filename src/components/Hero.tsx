@@ -99,7 +99,7 @@ const Hero = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className=''>
+      <div className='min-w-[440px] max-w-[980px] mx-auto w-full'>
         <p className='text-center font-bold'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
           <div className='hover:bg-gray-100 rounded-2xl group'>
