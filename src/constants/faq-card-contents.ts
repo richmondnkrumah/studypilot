@@ -1,9 +1,9 @@
-interface _faq_contents {
+export interface _faq_contents {
   title: string,
   summary: string
 }
 
-const CARD_DATA: _faq_contents[] = [
+export const CARD_DATA: _faq_contents[] = [
   {
     title: "What is StudyPilot and how can it help me?",
     summary: "StudyPilot brings the power of conversational AI to your documents, letting you chat with your PDFs as easily as using ChatGPT. Whether you're studying, researching, or analyzing documents, our platform helps you understand and extract information in seconds, backed up by the latest PDF AI technology."
