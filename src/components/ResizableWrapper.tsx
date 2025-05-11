@@ -12,11 +12,11 @@ const ResizableWrapper = ({
         pdfComponent: ReactNode
     }) => {
     return (
-        <PanelGroup direction="horizontal">
+        <PanelGroup className='h-full' direction="horizontal">
             <Panel defaultSize={30} minSize={20}>
                 {chatComponet}
             </Panel>
-            <PanelResizeHandle className="w-2 bg-blue-800" />
+            <PanelResizeHandle className="w-1 bg-gray-200" />
             <Panel defaultSize={30} minSize={20}>
                 {pdfComponent}
             </Panel>
