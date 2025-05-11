@@ -1,14 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-type Props = {
-    icon: string | StaticImport,
-    title: string,
-    summary: string,
-    image: string | StaticImport
-}
+import { _content } from '@/constants/card-content'
 
-const Card = ({icon,title,summary,image}: Props) => {
+const Card = ({icon,title,summary,image}: _content) => {
   return (
     <div className='outer rounded-2xl p-5 border border-gray-500'>
         <div className='inner flex flex-col gap-3'>
