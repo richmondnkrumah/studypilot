@@ -11,7 +11,7 @@ const ChatLayout = ({
     sideview: ReactNode
 }) => {
     return (
-        <main className='flex h-full '>
+        <main className='flex h-[100vh] '>
             {sideview}
             <ResizableWrapper chatComponet={chatview} pdfComponent={pdfview} />
         </main>
