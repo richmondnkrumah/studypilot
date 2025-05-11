@@ -5,6 +5,8 @@ import ARROWRIGHT from '../../public/arrowRight.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+import { savePdfBlob } from '@/lib/db'
+
 type Props = {}
 // breakpoints 0-809, 810-1280-1280----
 
@@ -14,9 +16,14 @@ const Hero = (props: Props) => {
   const router = useRouter()
 
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log("first")
     const file = e.target.files?.[0]
+    console.log("second")
+    
     if (file && file.type == "application/pdf") {
       uploadFile(file)
+      console.log("done")
+
     }
 
   }
@@ -30,17 +37,15 @@ const Hero = (props: Props) => {
   }
 
   const uploadFile = async (file: Blob) => {
+    console.log("starts upload here")
     setIsUploading(true)
-    const formData = new FormData()
-    formData.append('file', file)
-    console.log("pooss")
+    
 
     try {
-      const blobUrl = URL.createObjectURL(file)
-      sessionStorage.setItem('pdf-url', blobUrl)
-      console.log("poo")
+      await savePdfBlob('uploaded-pdf', file)
+      router.push('/chat')
       setIsUploading(false)
-      // router.push('/chat')
+
     }
     catch (err) {
       console.error(err)
@@ -97,8 +102,8 @@ const Hero = (props: Props) => {
       <div className=''>
         <p className='text-center font-bold'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
-          <div className=' group'>
-            <div className='flex justify-between items-center px-6 py-2.5'>
+          <div className='hover:bg-gray-100 rounded-2xl group'>
+            <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
                 <Image src={PDF} alt='pdf file icon' height={30} width={30} />
                 <p>Name of the file</p>
@@ -109,7 +114,7 @@ const Hero = (props: Props) => {
             </div>
           </div>
           <div className='w-full h-[1px] bg-gray-300'></div>
-          <div className='group'>
+          <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
                 <Image src={PDF} alt='pdf file icon' height={30} width={30} />
