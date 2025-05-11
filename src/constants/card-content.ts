@@ -4,36 +4,41 @@ import REASEARCHERSIMAGE from '../../public/researchers.avif'
 
 
 export interface _content {
-    icon: string | StaticImport,
     title: string,
     summary: string,
-    image: string | StaticImport
+    image: string | StaticImport,
+    semititle: string,
+    color: string
 }
 
 export const CARD_DATA:_content[] = [
     {
-        icon: REASEARCHERSVG,
-        title: 'for researchers',
-        summary: "Explore scientific papers, academic articles, and books to get the information you need for your research.",
-        image: REASEARCHERSIMAGE
+        title: 'Multi-File Chats',
+        summary: "Bring multiple PDFs into one conversation. Keep your study materials, papers, or project files easily accessible in one chat.",
+        image: REASEARCHERSIMAGE,
+        semititle: "organize",
+        color: "text-purple-600"
     },
     {
-        icon: REASEARCHERSVG,
-        title: 'for students',
-        summary: "Study for exams, get help with homework, and answer multiple choice questions faster than your classmates.",
-        image: REASEARCHERSIMAGE
+        title: 'Summarize PDFs',
+        summary: "Summarize academic articles, research papers, or reports. Extract the key insights without reading everything.",
+        image: REASEARCHERSIMAGE,
+        semititle: "simplify",
+        color: "text-pink-600"
     },
     {
-        icon: REASEARCHERSVG,
-        title: 'for professionals',
-        summary: "Navigate legal contracts, financial reports, manuals, and training material. Ask questions to any PDF to stay ahead.",
-        image: REASEARCHERSIMAGE
+        title: 'Translate PDFs',
+        summary: "Make any PDF speak your language. Transform documents from around the world into clear, readable text you can understand instantly.",
+        image: REASEARCHERSIMAGE,
+        semititle: "understand",
+        color: "text-amber-600"
     },
     {
-        icon: REASEARCHERSVG,
-        title: 'for journalists',
-        summary: "Analyze interviews, government reports, and investigative documents to uncover stories and verify facts faster.",
-        image: REASEARCHERSIMAGE
+        title: 'Side-by-Side View',
+        summary: "Keep the chat and PDF open together. Answers are linked to the original PDF content, making it simple to verify or explore further.",
+        image: REASEARCHERSIMAGE,
+        semititle: "navigate",
+        color: "text-green-600"
     }
 ]
 
