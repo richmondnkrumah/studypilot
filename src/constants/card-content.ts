@@ -31,8 +31,8 @@ export const CARD_DATA:_content[] = [
     },
     {
         icon: REASEARCHERSVG,
-        title: 'for multi-file chats',
-        summary: "Create folders to organize your files and chat with multiple PDFs in one single conversation.",
+        title: 'for journalists',
+        summary: "Analyze interviews, government reports, and investigative documents to uncover stories and verify facts faster.",
         image: REASEARCHERSIMAGE
     }
 ]
