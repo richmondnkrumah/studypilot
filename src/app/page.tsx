@@ -7,10 +7,10 @@ type Props = {}
 const Homepage = (props: Props) => {
   return (
     <>
-      <header className='mt-15 mx-auto xl:flex xl:justify-center'>
+      <header className='mt-16 mx-auto xl:flex xl:justify-center'>
         <Hero />
       </header>
-      <main className='my-15 mx-auto xl:flex xl:flex-col xl:items-center'>
+      <main className='my-16 mx-auto gap-16 flex flex-col xl:items-center'>
         <Features />
         <Faq />
       </main>
