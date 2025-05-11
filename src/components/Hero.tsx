@@ -60,14 +60,14 @@ const Hero = (props: Props) => {
         <div className='flex flex-col gap-5 text-center'>
           <h1 className='text-6xl font-bold'>Chat with any <span className='relative z-10 text-white  before:bg-amber-500 before:-z-10 before:absolute before:w-[110%] before:h-[90%] before:rotate-4 before:rounded-2xl before:-translate-x-[4%] before:-translate-y-[4%]'>PDF</span></h1>
           <div className='flex justify-center'>
-            <p className='max-w-[33rem] text-lg'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
+            <p className='max-w-[33rem] text-lg font-semibold text-[#707070]'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
           </div>
         </div>
         <div onClick={() => {
           fileInputRef.current?.click()
         }} onDragOver={(e) => e.preventDefault()} onDrop={(e) => {
           handleDrop(e)
-        }} className='rounded-4xl w-full min-w-[440px] max-w-[980px] h-[380px] mx-auto p-5 shadow-[0_0_28px_#FFF0C2]'>
+        }} className='rounded-4xl w-full min-w-[400px] max-w-[900px] h-[400px] mx-auto p-5 shadow-[0_0_28px_#FFF0C2]'>
           <div className='z-0 relative rounded-3xl bg-contain h-full border-2 border-amber-300 hover:bg-amber-300/10 border-dashed '>
             <input
               type="file"
@@ -87,7 +87,7 @@ const Hero = (props: Props) => {
                     <div className='rounded-lg bg-amber-500 py-2 text-center'>
                       <p className='text-white text-lg'>Browse File</p>
                     </div>
-                    <p className='font-bold'>Drag & Drop, or Choose PDF to upload</p>
+                    <p className='font-semibold text-[#707070]'>Drag & Drop, or Choose PDF to upload</p>
                   </div>
                   <div className=''>
                     <p className='font-bold text-gray-500'>Only PDF files are supported.</p>
@@ -99,8 +99,8 @@ const Hero = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className='min-w-[440px] max-w-[980px] mx-auto w-full'>
-        <p className='text-center font-bold'>For a quick try, get started with our sample files here:</p>
+      <div className='min-w-[400px] max-w-[900px] mx-auto w-full'>
+        <p className='text-center font-bold text-gray-500'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
@@ -113,7 +113,7 @@ const Hero = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className='w-full h-[1px] bg-gray-300'></div>
+          <div className='w-full h-[1px] bg-gray-200'></div>
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
@@ -121,7 +121,7 @@ const Hero = (props: Props) => {
                 <p>Name of the file</p>
               </div>
               <div className='group-hover:translate-x-3 transition-transform'>
-                <Image src={ARROWRIGHT} alt='arrow right svg' height={30} />
+                <Image src={ARROWRIGHT} className='text-green-500' alt='arrow right svg' height={30} />
               </div>
             </div>
           </div>
