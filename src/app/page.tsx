@@ -15,7 +15,7 @@ const Homepage = (props: Props) => {
         <Features />
         <Faq />
       </main>
-      <footer className='mx-auto flex justify-center '>
+      <footer className='mx-auto mb-16 flex justify-center '>
         <Footer />
       </footer>
     </>

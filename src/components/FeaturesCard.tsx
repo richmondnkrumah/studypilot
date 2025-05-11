@@ -10,11 +10,11 @@ const Card = ({ color, semititle, title, summary, image }: _features_content) =>
           <Image src={image} alt='card content image' height={400} className=' rounded-2xl border border-gray-100 shadow-sm object-cover' />
         </div>
         <div className='icon'>
-          <p className={`${color} text-sm xs:text-md uppercase font-semibold`}>{semititle}</p>
+          <p className={`${color} text-sm sm:text-md uppercase font-semibold`}>{semititle}</p>
         </div>
         <div className='text-content  flex flex-col gap-1'>
-          <h2 className='capitalize text-lg xs:text-xl font-bold text-[#525252] '>{title}</h2>
-          <p className=' text-sm xs:text-md font-semibold text-[#707070]'>{summary}</p>
+          <h2 className='capitalize text-lg sm:text-xl font-bold text-[#525252] '>{title}</h2>
+          <p className=' text-sm sm:text-[16px] font-semibold text-[#707070]'>{summary}</p>
         </div>
 
       </div>
