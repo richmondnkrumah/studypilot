@@ -4,7 +4,7 @@ import PDF from '../../public/PDF.svg'
 import ARROWRIGHT from '../../public/arrowRight.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-
+import ResponsiveWrapper from './ResponsiveWrapper'
 import { savePdfBlob } from '@/lib/db'
 
 type Props = {}
@@ -19,7 +19,7 @@ const Hero = (props: Props) => {
     console.log("first")
     const file = e.target.files?.[0]
     console.log("second")
-    
+
     if (file && file.type == "application/pdf") {
       uploadFile(file)
       console.log("done")
@@ -39,7 +39,7 @@ const Hero = (props: Props) => {
   const uploadFile = async (file: Blob) => {
     console.log("starts upload here")
     setIsUploading(true)
-    
+
 
     try {
       await savePdfBlob('uploaded-pdf', file)
@@ -55,19 +55,19 @@ const Hero = (props: Props) => {
   }
 
   return (
-    <div className=' xl:w-[1280px] flex flex-col gap-10'>
-      <div className='flex flex-col gap-5'>
-        <div className='flex flex-col gap-5 text-center'>
+    <ResponsiveWrapper>
+      <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-3 text-center'>
           <h1 className='text-6xl font-bold'>Chat with any <span className='relative z-10 text-white  before:bg-amber-500 before:-z-10 before:absolute before:w-[110%] before:h-[90%] before:rotate-4 before:rounded-2xl before:-translate-x-[4%] before:-translate-y-[4%]'>PDF</span></h1>
           <div className='flex justify-center'>
-            <p className='max-w-[33rem] text-lg font-semibold text-[#707070]'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
+            <p className='max-w-[36rem] text-lg font-semibold text-[#707070]'>Join millions of <span className='text-amber-500 underline'>students, researchers and professionals</span> to instantly answer questions and understand research with AI  </p>
           </div>
         </div>
         <div onClick={() => {
           fileInputRef.current?.click()
         }} onDragOver={(e) => e.preventDefault()} onDrop={(e) => {
           handleDrop(e)
-        }} className='rounded-4xl w-full min-w-[400px] max-w-[900px] h-[400px] mx-auto p-5 shadow-[0_0_28px_#FFF0C2]'>
+        }} className='rounded-4xl w-full h-[400px] mx-auto p-5 shadow-[0_0_28px_#FFF0C2]'>
           <div className='z-0 relative rounded-3xl bg-contain h-full border-2 border-amber-300 hover:bg-amber-300/10 border-dashed '>
             <input
               type="file"
@@ -99,7 +99,7 @@ const Hero = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className='min-w-[400px] max-w-[900px] mx-auto w-full'>
+      <div className=''>
         <p className='text-center font-bold text-gray-500'>For a quick try, get started with our sample files here:</p>
         <div className='flex flex-col gap-1'>
           <div className='hover:bg-gray-100 rounded-2xl group'>
@@ -127,7 +127,8 @@ const Hero = (props: Props) => {
           </div>
         </div>
       </div>
-    </div>
+    </ResponsiveWrapper>
+
   )
 }
 
