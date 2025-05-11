@@ -1,6 +1,7 @@
 'use client'
 import { ChangeEvent, DragEvent, useRef, useState } from 'react'
 import PDF from '../../public/PDF.svg'
+import PDFFILE from '../../public/pdfFile.svg'
 import ARROWRIGHT from '../../public/arrowRight.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -105,7 +106,7 @@ const Hero = (props: Props) => {
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
-                <Image src={PDF} alt='pdf file icon' className='w-[25px] h-[25px] sm:w-[30px] sm:h-[30px]' />
+                <Image src={PDFFILE} alt='pdf file icon' className='w-[25px] h-[25px] sm:w-[30px] sm:h-[30px]' />
                 <p className='text-sm sm:text-md'>Name of the file</p>
               </div>
               <div className='group-hover:translate-x-3 transition-transform'>
@@ -117,7 +118,7 @@ const Hero = (props: Props) => {
           <div className='hover:bg-gray-100 rounded-2xl group'>
             <div className=' flex justify-between items-center px-6 py-2.5'>
               <div className='flex gap-5 items-center'>
-                <Image src={PDF} alt='pdf file icon' className='w-[25px] h-[25px] sm:w-[30px] sm:h-[30px]' />
+                <Image src={PDFFILE} alt='pdf file icon' className='w-[25px] h-[25px] sm:w-[30px] sm:h-[30px]' />
                 <p className='text-sm sm:text-md'>Name of the file</p>
               </div>
               <div className='group-hover:translate-x-3 transition-transform'>
