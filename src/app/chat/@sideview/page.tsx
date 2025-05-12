@@ -12,11 +12,11 @@ const SideView = (props: Props) => {
   const [isOpened, setIsOpened] = useState<boolean>(false)
 
   return (
-    <div className={` flex flex-col ${isOpened ? "w-14" : "w-64"} transition-all duration-400 ease-in-out bg-green-500  h-full px-3 pt-3 pb-6 border-r border-r-gray-200`}>
+    <div className={` flex flex-col ${isOpened ? "w-14" : "w-64"} transition-all duration-400 ease-in-out  h-full px-3 pt-3 pb-6 border-r border-r-gray-200`}>
       <div className='flex justify-between items-center mb-6 relative'>
         <h1 className={`text-3xl font-bold transition-opacity duration-200 ${!isOpened ? 'opacity-100 delay-200' : 'opacity-0 delay-0'}`}>Study<span className='text-amber-500'>Pilot</span></h1>
-        <div onClick={() => setIsOpened(prev => !prev)} className='cursor-pointer absolute right-0 top-0 w-8 h-8'>
-          <Image className={`${isOpened ? "rotate-180" : "rotate-0"} transition-all duration-400`} src={SIDEBAR} alt='chevron right icon' height={32} width={32} />
+        <div onClick={() => setIsOpened(prev => !prev)} className='cursor-pointer absolute right-0 top-0 w-7 h-7'>
+          <Image className={`${isOpened ? "rotate-180" : "rotate-0"} transition-all duration-400`} src={SIDEBAR} alt='chevron right icon' height={28} width={28} />
         </div>
       </div>
       <div className={`h-full flex flex-col gap-5 transition-opacity duration-200 ${!isOpened ? 'opacity-100 delay-200 pointer-events-auto' : 'opacity-0 delay-0 pointer-events-none'}`}>
