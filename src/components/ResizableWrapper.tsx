@@ -14,11 +14,11 @@ const ResizableWrapper = ({
     return (
         <PanelGroup className='h-full' direction="horizontal">
             <Panel defaultSize={30} minSize={20}>
-                {chatComponet}
+                {pdfComponent}
             </Panel>
             <PanelResizeHandle className="w-1 bg-gray-200" />
             <Panel defaultSize={30} minSize={20}>
-                {pdfComponent}
+                {chatComponet}
             </Panel>
         </PanelGroup>
     )
