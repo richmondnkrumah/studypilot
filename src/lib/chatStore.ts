@@ -3,9 +3,9 @@ import { createStore } from 'zustand/vanilla'
 import { persist } from 'zustand/middleware'
 
 export interface _file {
-  id: number | string
+  id: string
   name: string
-  data: Blob
+  data: File
 }
 
 export interface _chat_store_state {
@@ -14,7 +14,9 @@ export interface _chat_store_state {
 }
 
 export interface _chat_store_actions {
-  delteFile: (id: string) => void
+  deleteFile: (id: string) => void,
+  saveFile: (id: string, name: string, blob: File) => void,
+  getFile: (id: string) => _file | null
 }
 
 export type ChatStore = _chat_store_state & _chat_store_actions
@@ -28,18 +30,43 @@ export const createChatStore = (
   initState: _chat_store_state = defaultInitState,
 ) => {
   return createStore<ChatStore>()(
-    persist((set) => ({
-      ...initState,
-      delteFile: (id) =>
-        set((state) => ({
-          file_blobs: state.file_blobs.filter(
-            (blob_data) => blob_data.id !== id
-          ),
-          file_summary: state.file_summary.filter(
-            (blob_data) => blob_data.id !== id
-          ),
+    persist(
+      (set, get) => ({
+        ...initState,
+        deleteFile: (id) =>
+          set((state) => ({
+            file_blobs: state.file_blobs.filter(
+              (blob_data) => blob_data.id !== id
+            ),
+            file_summary: state.file_summary.filter(
+              (blob_data) => blob_data.id !== id
+            ),
+          })),
+        saveFile: (id, name, blob) => set((state) => ({
+          file_blobsn: [...state.file_blobs, {
+            id: id,
+            data: blob
+          }],
+          file_summary: [...state.file_summary, {
+            id: id,
+            name: name
+          }],
         })),
-    }),
-    { name: "Chat-Storage" }
-  ))
+        getFile: (id) => {
+          const name = get().file_summary.find(file => file.id === id)?.name
+          if (name) {
+            const data = get().file_blobs.find(file => file.id === id)?.data
+            return {
+              id: id,
+              name: name,
+              data: data!
+            }
+          }
+          return null
+
+        }
+      }),
+      { name: "Chat-Storage" }
+    )
+  )
 }
