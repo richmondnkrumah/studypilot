@@ -5,6 +5,7 @@ import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { useChatStore } from '@/lib/ChatStoreProvider';
 import { useSearchParams } from 'next/navigation';
+import Loader from '@/components/Loader';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 type Props = {}
@@ -53,7 +54,7 @@ const PdfView = (props: Props) => {
               <Page pageNumber={1} width={500} />
             </Document>
           ) : (
-            <p>Loading PDF…</p>
+            <Loader />
           )
 
       }

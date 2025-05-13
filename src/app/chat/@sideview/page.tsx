@@ -7,6 +7,7 @@ import SEARCH from '../../../../public/search.svg'
 import SIDEBAR from '../../../../public/sidebar.svg'
 import { useChatStore } from '@/lib/ChatStoreProvider'
 import { useRouter } from 'next/navigation'
+import Loader from '@/components/Loader'
 type Props = {}
 
 const SideView = (props: Props) => {
@@ -28,7 +29,7 @@ const SideView = (props: Props) => {
           <input className='outline-none' type="search" name="" placeholder='Search' id="" />
         </div>
         <div className='grow border-t border-t-gray-300 pt-5'>
-          {pdfFiles.length < 1 && <p>LOADING</p>}
+          {pdfFiles.length < 1 && <Loader />}
           {
             pdfFiles ?
               pdfFiles.map(file =>

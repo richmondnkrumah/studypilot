@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import ResponsiveWrapper from './ResponsiveWrapper'
 import { useChatStore } from '@/lib/ChatStoreProvider'
 import { v4 as uuidv4 } from 'uuid';
+import Loader from './Loader'
 type Props = {}
 const Hero = (props: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -77,7 +78,7 @@ const Hero = (props: Props) => {
               className="hidden"
             />
             {
-              isUploading ? <p>Its uploading</p> :
+              isUploading ? <Loader /> :
                 <div className='flex flex-col justify-center items-center h-full gap-12'>
                   <div className='flex flex-col gap-4'>
                     <div className='flex justify-center items-center'>
