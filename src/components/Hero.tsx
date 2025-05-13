@@ -6,19 +6,19 @@ import ARROWRIGHT from '../../public/arrowRight.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import ResponsiveWrapper from './ResponsiveWrapper'
-import { savePdfBlob } from '@/lib/db'
-
+import { useChatStore } from '@/lib/ChatStoreProvider'
+import { v4 as uuidv4 } from 'uuid';
 type Props = {}
-// breakpoints 0-809, 810-1280-1280----
-
 const Hero = (props: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [isUploading, setIsUploading] = useState(false)
   const router = useRouter()
+  const saveFile = useChatStore(state => state.saveFile) 
 
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     console.log("first")
     const file = e.target.files?.[0]
+    
     console.log("second")
 
     if (file && file.type == "application/pdf") {
@@ -37,22 +37,20 @@ const Hero = (props: Props) => {
     }
   }
 
-  const uploadFile = async (file: Blob) => {
+  const uploadFile = async (file: File) => {
     console.log("starts upload here")
     setIsUploading(true)
-
-
     try {
-      await savePdfBlob('uploaded-pdf', file)
-      router.push('/chat')
+      const pdf_id = uuidv4()
+      console.log("file",file)
+      saveFile(pdf_id,file.name,file)
+      router.push(`/chat?id=${pdf_id}`)
       setIsUploading(false)
-
     }
     catch (err) {
       console.error(err)
       setIsUploading(false)
     }
-
   }
 
   return (
