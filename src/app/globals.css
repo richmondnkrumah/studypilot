@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 30px;
+  aspect-ratio: 1;
+  display: grid;
+}
+.loader::before,
+.loader::after {    
+  content:"";
+  grid-area: 1/1;
+  --c:no-repeat radial-gradient(farthest-side,oklch(76.9% 0.188 70.08) 92%,#0000);
+  background: 
+    var(--c) 50%  0, 
+    var(--c) 50%  100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0    50%;
+  background-size: 7px 7px;
+  animation: l12 1s infinite;
+}
+.loader::before {
+  margin: 4px;
+  /* filter: hue-rotate(45deg); */
+  background-size: 4px 4px;
+  animation-timing-function: linear
+}
+
+@keyframes l12 { 
+  100%{transform: rotate(.5turn)}
+}
