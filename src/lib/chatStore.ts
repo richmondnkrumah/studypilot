@@ -1,22 +1,24 @@
 // src/stores/chat-store.ts
 import { createStore } from 'zustand/vanilla'
-import { persist } from 'zustand/middleware'
-
+import { createJSONStorage, persist, StateStorage } from 'zustand/middleware'
+import { get, set, del } from 'idb-keyval'
 export interface _file {
   id: string
   name: string
-  data: File
+  data: Uint8Array
 }
 
 export interface _chat_store_state {
   file_blobs: Omit<_file, "name">[]
-  file_summary: Omit<_file, "data">[]
+  file_summary: Omit<_file, "data">[],
+  hasHydrated: boolean
 }
 
 export interface _chat_store_actions {
   deleteFile: (id: string) => void,
-  saveFile: (id: string, name: string, blob: File) => void,
-  getFile: (id: string) => _file | null
+  saveFile: (id: string, name: string, blob: File) => Promise<void>,
+  getFile: (id: string) => _file | null,
+  setHasHydrated: (status: boolean) => void
 }
 
 export type ChatStore = _chat_store_state & _chat_store_actions
@@ -24,6 +26,22 @@ export type ChatStore = _chat_store_state & _chat_store_actions
 export const defaultInitState: _chat_store_state = {
   file_blobs: [],
   file_summary: [],
+  hasHydrated: false
+}
+
+const idbStorage: StateStorage = {
+  getItem: async (name: string): Promise<string | null> => {
+    // console.log(name, 'has been retrieved')
+    return (await get(name)) || null
+  },
+  setItem: async (name: string, value: string): Promise<void> => {
+    // console.log(name, 'with value', value, 'has been saved')
+    await set(name, value)
+  },
+  removeItem: async (name: string): Promise<void> => {
+    // console.log(name, 'has been deleted')
+    await del(name)
+  },
 }
 
 export const createChatStore = (
@@ -42,31 +60,36 @@ export const createChatStore = (
               (blob_data) => blob_data.id !== id
             ),
           })),
-        saveFile: (id, name, blob) => set((state) => ({
-          file_blobsn: [...state.file_blobs, {
-            id: id,
-            data: blob
-          }],
-          file_summary: [...state.file_summary, {
-            id: id,
-            name: name
-          }],
-        })),
-        getFile: (id) => {
-          const name = get().file_summary.find(file => file.id === id)?.name
-          if (name) {
-            const data = get().file_blobs.find(file => file.id === id)?.data
-            return {
+        saveFile: async (id, name, blob) => {
+          const arrayBuffer = await blob.arrayBuffer()
+          const uint8Array = new Uint8Array(arrayBuffer)
+          set((state) => ({
+            file_blobs: [...state.file_blobs, {
               id: id,
-              name: name,
-              data: data!
-            }
-          }
-          return null
-
-        }
+              data: uint8Array
+            }],
+            file_summary: [...state.file_summary, {
+              id: id,
+              name: name
+            }],
+          }))
+        },
+        getFile: (id) => {
+          const summary = get().file_summary.find(f => f.id === id)
+          const data = get().file_blobs.find(f => f.id === id)?.data
+          return summary && data
+            ? { id, name: summary.name, data: new Uint8Array(data) }
+            : null
+        },
+        setHasHydrated: (status) => set({ hasHydrated: status })
       }),
-      { name: "Chat-Storage" }
+      {
+        name: "Chat-Storage",
+        storage: createJSONStorage(() => idbStorage),
+        onRehydrateStorage: () => (state) => {
+          state?.setHasHydrated(true)
+        },
+      }
     )
   )
 }
