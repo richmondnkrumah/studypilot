@@ -89,6 +89,24 @@ export const createChatStore = (
         onRehydrateStorage: () => (state) => {
           state?.setHasHydrated(true)
         },
+        partialize: (state) => ({
+          file_summary: state.file_summary,
+          file_blobs: state.file_blobs.map(f => ({
+            id: f.id,
+            data: Array.from(f.data) // convert Uint8Array to plain array
+          }))
+        }),
+        merge: (persistedState, currentState) => {
+          const typedState = persistedState as any
+          return {
+            ...currentState,
+            ...typedState,
+            file_blobs: typedState.file_blobs.map((f: any) => ({
+              id: f.id,
+              data: new Uint8Array(f.data)
+            }))
+          }
+        }
       }
     )
   )
