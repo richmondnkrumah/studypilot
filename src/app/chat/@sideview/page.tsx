@@ -28,14 +28,19 @@ const SideView = (props: Props) => {
           <Image src={SEARCH} alt='add icon' height={20} width={20} className='' />
           <input className='outline-none' type="search" name="" placeholder='Search' id="" />
         </div>
-        <div className='grow border-t border-t-gray-300 pt-5'>
-          {pdfFiles.length < 1 && <Loader />}
+        <div className='grow border-t border-t-gray-300 pt-5 flex flex-col gap-2'>
+          {pdfFiles.length < 1 &&
+            <div className='w-full flex justify-center'>
+
+              <Loader />
+            </div>
+          }
           {
             pdfFiles ?
               pdfFiles.map(file =>
                 <div onClick={() => router.push(`/chat?id=${file.id}`)} key={file.id} className='cursor-pointer flex items-center gap-5 p-3 rounded-xl bg-gray-100'>
                   <Image src={PDFFILE} height={25} width={25} alt='pdf file icon' />
-                  <p className='text-sm truncate max-w-[214px]'>{file.name}</p>
+                  <p className='text-sm truncate max-w-[214px]'>{file.name.split('.')[0]}</p>
                 </div>
               )
               :
