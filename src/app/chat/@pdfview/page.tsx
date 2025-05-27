@@ -13,8 +13,8 @@ type Props = {}
 const PdfView = (props: Props) => {
   const [pdfData, setPdfData] = useState<Uint8Array | null | undefined>(null)
   const memoizedFile = useMemo(() => {
-  return pdfData ? { data: pdfData } : null
-}, [pdfData])
+    return pdfData ? { data: pdfData } : null
+  }, [pdfData])
   const [notFound, setNotFound] = useState<boolean>(false)
   const getFile = useChatStore(state => state.getFile)
   const gre = useChatStore(state => state.file_blobs)
@@ -22,6 +22,11 @@ const PdfView = (props: Props) => {
   const hasHydrated = useChatStore(state => state.hasHydrated)
   const searchParams = useSearchParams()
   const idParam = searchParams.get('id')
+
+  const [numPages, setNumPages] = useState<number>();
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
 
   useEffect(() => {
     if (!hasHydrated) return
@@ -45,17 +50,18 @@ const PdfView = (props: Props) => {
   }, [hasHydrated, idParam])
 
   return (
-    <div>
+    <div className='w-full h-full '>
       {
-        notFound ? <p>Error display pdf, htddsfsd no such file found</p>
-          :
-          memoizedFile ? (
-            <Document file={memoizedFile} >
-              <Page pageNumber={1} width={500} />
-            </Document>
-          ) : (
-            <Loader />
-          )
+        memoizedFile && (
+          <Document  onLoadSuccess={onDocumentLoadSuccess} noData={<p>Error display pdf, htddsfsd no such file found</p>} loading={<Loader />} file={memoizedFile} >
+            <div className="max-w-full bg-red-300  overflow-y-auto overflow-x-hidden max-h-screen"> 
+            {numPages &&
+              Array.from({ length: numPages }, (_, index) => index + 1).map(
+                (pageNumber) => <Page key={pageNumber} pageNumber={pageNumber} />
+              )}
+               </div>
+          </Document>
+        )
 
       }
     </div >
